@@ -1,0 +1,97 @@
+{% extends 'basse.html' %}
+
+
+
+{%block content%}
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+
+    <form action="" method="POST"  enctype="multipart/form-data" >
+        {% csrf_token %}
+    <div class="bg-secondary rounded h-100 p-4">
+        <h6 class="mb-4">Floating Label</h6>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" name="name" value="{{podd.name}}"
+                placeholder="Name">
+            <label for="floatingInput">name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingPassword" name="price" value="{{podd.price}}"
+                placeholder="Price">
+            <label for="floatingPassword">price</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" name="size" value="{{podd.size}}"
+                placeholder="size">
+            <label for="floatingInput">Size</label>
+        </div>
+        <!-- <div class="form-floating mb-3">
+            <input type="file" class="form-control" id="floatingPassword" name="image"
+                placeholder="Price">
+            <label for="floatingPassword">image</label>
+        </div> -->
+
+        <div class="mb-3">
+            <label for="formFileSm" class="form-label">image 1</label>
+            <input class="form-control form-control-sm bg-dark" id="formFileSm" type="file" name="image_1"  value="{{podd.image_1}}">
+        </div>
+        <div class="mb-3">
+            <label for="formFileSm" class="form-label">image 2</label>
+            <input class="form-control form-control-sm bg-dark" id="formFileSm" type="file" name="image_2" value="{{podd.image_2}}">
+        </div>
+        <div class="mb-3">
+            <label for="formFileSm" class="form-label">image 3</label>
+            <input class="form-control form-control-sm bg-dark" id="formFileSm" type="file" name="image_3" value="{{podd.image_3}}">
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" name="quantity" value="{{podd.quantity}}"
+                placeholder="quantity">
+            <label for="floatingPassword">quantity</label>
+        </div>
+        <div class="form-floating mb-3">
+            <select class="form-select" id="floatingSelect" name="a" value="{{podd.a}}"
+                aria-label="Floating label select example">
+                <option selected>choose Categories</option>
+                {% for item in categories %}
+                <option value={{item.id}}>{{ item.name }}</option>
+                {% endfor %}
+                
+            </select>
+            <label for="floatingSelect">Catogorys</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <select class="form-select" id="floatingSelect" name="b" value="{{podd.b}}"
+                aria-label="Floating label select example">
+                <option selected>Choose Brands</option>
+                {% for item in brand %}
+                <option value = {{item.id}}>{{ item.name }}</option>
+                {% endfor %}
+                
+            </select>
+            <label for="floatingSelect">brands</label>
+        </div>
+        <div class="form-floating">
+            <textarea class="form-control" placeholder="discription"
+                id="floatingTextarea"  name="discription" value="{{podd.discription}}" style="height: 150px;"></textarea>
+            <label for="floatingTextarea">discription</label>
+        </div>
+        <br>
+        <br>
+        <button type="submit" class="btn btn-primary">UPDATE</button>
+    </div>
+    </form>
+</div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+{%endblock%}

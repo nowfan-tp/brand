@@ -1,0 +1,108 @@
+
+
+
+
+{% extends 'basse.html' %}
+
+
+
+
+
+
+{%block content%}
+
+<section class="gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-10 col-xl-12">
+          <div class="d-flex justify-content-end mb-3">
+            <button
+              class="btn the-userbutton"
+              onclick="generateInvoice()"
+              style="color: #d7790d"
+            >
+              
+            </button>
+          </div>
+          
+          <div class="card" style="border-radius: 25px; ">
+            <div class="card-body p-4" id="invoice" style="background: linear-gradient(45deg, black, transparent);border-radius:25px;">
+              <td>
+                {% for item in cart_items %}
+                <img class="img-fluid"
+                  src="{{item.product.image_1.url}}"
+                  alt=""
+                  style="max-width:8em; border-radius:20px; margin:0.8rem;"
+                />
+                {%endfor%}
+              </td>
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <p class="lead fw-normal mb-0" style="color: #d7790d">
+                  Order Summary
+                </p>
+                <p class="small text-muted mb-0">
+                  Order ID : {{order_item.id}}
+                </p>
+              </div>
+              {% for item in cart_items %}
+              <div class="card shadow-0 border mb-4">
+                <div class="card-body">
+                  <div class="row">
+                    <div
+                      class="col-md-4 text-center d-flex justify-content-center align-items-center"
+                    >
+                      <p class="text-muted mb-0">
+                        Product name : {{item.product.name}}
+                      </p>
+                    </div>
+                    <div
+                      class="col-md-4 text-center d-flex justify-content-center align-items-center"
+                    >
+                      <p class="text-muted mb-0 small">
+                        Price : ₹{{item.price }}
+                      </p>
+                    </div>
+                    <div
+                      class="col-md-4 text-center d-flex justify-content-center align-items-center"
+                    >
+                      <p class="text-muted mb-0 small">
+                        Quantity : {{item.quantity}}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {%endfor%}
+              
+              <div class="d-flex justify-content-between pt-2">
+                <p class="fw-bold mb-0" style="color: #d7790d">Order Details</p>
+                <p class="text-muted mb-0" id="totel_price">
+                  <span class="fw-bold me-4">Total Amount : </span
+                  >₹{{order_item.total_price }}
+                </p>
+              </div>
+  
+              <div class="d-flex justify-content-between pt-2">
+                <h5 class="text-muted">Order status :{{order_item.status }}</h5>
+              </div>
+  
+              <div class="d-flex justify-content-between">
+                <p class="text-muted mb-0">
+                  Ordered date : {{order_item.created_at }}
+                </p>
+              </div>
+            </div>
+            <br />
+            
+          
+          </div>
+         
+         
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+{%endblock%}

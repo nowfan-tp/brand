@@ -1,0 +1,48 @@
+ {% extends 'basse.html' %}
+	
+            {% block content %}
+
+    <div class="container-fluid pt-4 px-4">
+        <div class="row g-4">   
+            <div class="col-12">
+                <div class="bg-secondary rounded h-100 p-4">
+                    <h6 class="mb-4">User Table</h6>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">User Name</th>
+                                    
+                                    <th scope="col">Email</th>
+                                    <th scope="col">User Bolck</th>
+                                    <th scope="col">User Unbkock</th>
+                                    <th scope="col">User Delete</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for items in users %}
+                                <tr>
+                                    
+                                    <th scope="row">{{items.id}}</th>
+                                    <td>{{items.username}}</td>
+                                    
+                                    <td>{{items.email}}</td>
+                                    
+                                    <td><a href="blockuser/{{items.pk}}"> <button type="button" class="btn btn-outline-danger m-2">BLOCK</button></a></td>
+                                    <td><a href="unblock_user/{{items.id}}"><button type="button" class="btn btn-outline-success m-2">UNBLOCK</button></a></td>
+                                    <td><a href="delete/{{items.id}}"><button type="button" class="btn btn-outline-warning m-2">DELETE</button></a></td>
+                                    
+                                </tr>
+                                {% endfor%}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+{% endblock %}

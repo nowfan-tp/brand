@@ -1,0 +1,160 @@
+	{% extends 'base.html' %}
+	{% block content %}
+	<!-- End Header Area -->
+
+	<!-- Start Banner Area -->
+	<section class="banner-area organic-breadcrumb">
+		<div class="container">
+			<div class="breadcrumb-banner d-flex flex-wrap align-items-center justify-content-end">
+				<div class="col-first">
+					<h1>Confirmation</h1>
+					<nav class="d-flex align-items-center">
+						<a href="/index">Home<span class="lnr lnr-arrow-right"></span></a>
+						<a href="/category">Confirmation</a>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Banner Area -->
+
+	<!--================Order Details Area =================-->
+	<section class="order_details section_gap">
+		<div class="container">
+			<h3 class="title_confirmation">Thank you. Your order has been received.</h3>
+			{% for i in addr%}
+			<div class="row order_d_inner">
+				<div class="col-lg-4">
+					<div class="details_item">
+						<h4>Order Info</h4>
+						<ul class="list">
+							<li><a href="#"><span>tracking number</span> :{{ tracking_no }}</a></li>
+							<li><a href="#"><span>Date</span> :{{created_at}}</a></li>
+							<li><a href="#"><span>Total</span> :{{payable| stringformat:'d'}}</a></li>
+							<li><a href="#"><span>Payment method</span> :{{ payment_mode }}</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="details_item">
+						<h4>Customer details</details></h4>
+						<ul class="list">
+							<li><a href="#"><span>Name</span> : {{cust.first_name}}</a></li>
+							<li><a href="#"><span>Phone</span> : {{i.phone}}</a></li>
+							<li><a href="#"><span>Email</span> : {{cust.email}}</a></li>
+							<!-- <li><a href="#"><span>Postcode </span> : 36952</a></li> -->
+						</ul>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="details_item">
+						<h4>Shipping Address</h4>
+						<ul class="list">
+							<li><a href="#"><span>Street</span> : {{i.state}}</a></li>
+							<li><a href="#"><span>City</span> : {{i.city}}</a></li>
+							<li><a href="#"><span>disrict</span> : {{i.locality}}</a></li>
+							<li><a href="#"><span>Postcode </span> : {{i.pincode}}</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			{%endfor%}
+			<div class="order_details_table">
+				<h2>Order Details</h2>
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">Product</th>
+								<th scope="col">Quantity</th>
+								<th scope="col">Total</th>
+							</tr>
+						</thead>
+						{% for item in cart %}
+						<tbody>
+							<tr>
+								<td>
+									<p>{{item.product.name}}</p>
+								</td>
+								<td>
+									<h5>x {{item.quantity}}</h5>
+								</td>
+								<td>
+									<p> ₹{{catr_total_price}}</p>
+								</td>
+							</tr>
+							{% endfor %}
+							<!-- <tr>
+								<td>
+									<p>Pixelstore fresh Blackberry</p>
+								</td>
+								<td>
+									<h5>x 02</h5>
+								</td>
+								<td>
+									<p>$720.00</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<p>Pixelstore fresh Blackberry</p>
+								</td>
+								<td>
+									<h5>x 02</h5>
+								</td>
+								<td>
+									<p>$720.00</p>
+								</td>
+							</tr> -->
+							
+							<tr>
+								<td>
+									<h4>Subtotal</h4>
+								</td>
+								<td>
+									<h5></h5>
+								</td>
+								<td>
+									<p>₹{{order_totel}}</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h4>Shipping</h4>
+								</td>
+								<td>
+									<h5></h5>
+								</td>
+								<td>
+									<p>Flat rate: ₹{{shipping}}</p>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h4>Total</h4>
+								</td>
+								<td>
+									<h5></h5>
+								</td>
+								<td>
+									<p>₹{{payable| stringformat:'d'}}</p>
+								</td>
+							</tr>
+						</tbody>
+						
+					</table>
+				</div>
+			</div>
+			<br><br>
+			<div class="card_area d-flex align-items-center">
+				<a class="primary-btn" href="{% url 'index'%}">Done</a>
+				
+			</div>
+			
+		</div>
+		
+	</section>
+	<!--================End Order Details Area =================-->
+
+	<!-- start footer Area -->
+	{%endblock%}

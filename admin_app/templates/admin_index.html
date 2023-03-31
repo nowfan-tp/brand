@@ -1,0 +1,173 @@
+            {% extends 'basse.html' %}
+
+
+
+            <!-- {%block contentt%}
+
+<form class="d-none d-md-flex ms-4" action="" method="POST">
+  <input class="form-control bg-dark border-0" type="search" placeholder="Search" name = "quary">
+</form>
+
+
+
+{%endblock%} -->
+	
+            {% block content %}
+    
+            
+            
+            <!-- Navbar End -->
+
+
+            <!-- Sale & Revenue Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-line fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Totel Sale</p>
+                                <h6 class="mb-0">₹{{Grandtotal}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Totel Customers</p>
+                                <h6 class="mb-0">{{user}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-area fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">order Count</p>
+                                <h6 class="mb-0">{{ordercount}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">Total Delivered Order</p>
+                                <h6 class="mb-0">{{orderli}}</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Sale & Revenue End -->
+                    <!-- Sales Chart Start -->
+<!-- <div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-secondary text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0"> Sales by Year</h6>
+                </div>
+                <canvas id="sales-by-year"></canvas>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-secondary text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">Sales by Month</h6>
+                </div>
+                <canvas id="sales-by-month"></canvas>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- Sales Chart End -->
+
+
+            
+
+            <!-- Sales Chart Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Top 3 selse</h6>
+                                <!-- <a href="">Show All</a> -->
+                            </div>
+                            <canvas id="worldwide-sales"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Salse & Revenue</h6>
+                                <!-- <a href="">Show All</a> -->
+                            </div>
+                            <canvas id="salse-revenue"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- Sales Chart End -->
+
+
+             <!-- Recent Sales Start  -->
+            
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-secondary text-center rounded p-4">
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        <h6 class="mb-0">Recent Salse</h6>
+                        <a href="">Show All</a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table text-start align-middle table-bordered table-hover mb-0" id="mytable" >
+                            <thead>
+                                <tr class="text-white">
+                                    <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Order Id</th>
+                                    <th scope="col">Customer</th>
+                                    <th scope="col">Amount</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for item in order_uu %}
+                                <tr>
+                                    <td><input class="form-check-input" type="checkbox"></td>
+                                    <td>{{item.created_at }}</td>
+                                    <td>{{item.id}}</td>
+                                    <td>{{item.user.first_name }}</td>
+                                    <td>₹{{item.total_price }}</td>
+                                    <td>{{item.payment_mode }}</td>
+                                    <td><a class="btn btn-sm btn-primary" href="{% url 'detials' item.id %}">Detail</a></td>
+                                </tr>
+                               {%endfor%}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- Recent Sales End -->
+
+
+            
+         
+           
+            
+            
+
+
+{% endblock %}
+
+
+
+
+
+    
+
+
+           
